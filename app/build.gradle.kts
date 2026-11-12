@@ -23,10 +23,17 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
-            }
+            // 启用 R8 代码压缩、混淆与优化
+            isMinifyEnabled = true
+
+            // 启用资源剪枝，移除未使用的资源文件
+            isShrinkResources = true
+
+            // 配置 ProGuard 规则文件
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
