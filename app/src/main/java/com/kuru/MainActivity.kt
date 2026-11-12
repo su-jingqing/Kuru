@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MainScreen(
                         notes = notes,
+                        onAddNote = { s -> viewModel.insertNote(s) },
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
